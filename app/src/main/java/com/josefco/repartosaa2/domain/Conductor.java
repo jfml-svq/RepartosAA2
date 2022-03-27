@@ -66,4 +66,13 @@ public class Conductor {
         this.telefono = telefono;
         this.direccion = direccion;
     }
+
+    @Override
+    public String toString() {
+        return "Conductor{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
+    }
 }

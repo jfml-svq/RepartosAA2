@@ -7,7 +7,9 @@ import com.josefco.repartosaa2.view.ListUsuariosView;
 
 import java.util.List;
 
-public class ListUsuarioPresenter implements ListUsuariosContract.Presenter, ListUsuariosContract.Model.CargarUsuariosListener {
+public class ListUsuarioPresenter implements
+        ListUsuariosContract.Presenter,
+        ListUsuariosContract.Model.CargarUsuariosListener {
 
     private ListUsuariosModel model;
     private ListUsuariosView view;

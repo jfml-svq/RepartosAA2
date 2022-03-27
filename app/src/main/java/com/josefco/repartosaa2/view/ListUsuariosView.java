@@ -20,7 +20,8 @@ import com.josefco.repartosaa2.presenter.ListUsuarioPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListUsuariosView extends AppCompatActivity implements ListUsuariosContract.View {
+public class ListUsuariosView extends AppCompatActivity implements
+        ListUsuariosContract.View {
 
     private ListUsuarioPresenter presenter;
     private ArrayAdapter<Usuario> usuariosAdapter;
@@ -76,13 +77,13 @@ public class ListUsuariosView extends AppCompatActivity implements ListUsuariosC
         int position = info.position;
 
         switch (item.getItemId()) {
-            case R.id.addCamion:
+            case R.id.addConductor:
             Toast.makeText(this, "añadir " + position, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.deleteCamion:
+            case R.id.deleteConductor:
                 Toast.makeText(this, "borrar " + position, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.editCamion:
+            case R.id.editConductor:
                 Toast.makeText(this, "editar " + position, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.seeDireccion:

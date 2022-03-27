@@ -72,14 +72,17 @@ public class ListPaquetesView extends AppCompatActivity implements ListPaquetesC
         int position = info.position;
 
         switch (item.getItemId()) {
-            case R.id.addCamion:
+            case R.id.addConductor:
                 Toast.makeText(this, "añadir " + position, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.deleteCamion:
+            case R.id.deleteConductor:
                 Toast.makeText(this, "borrar " + position, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.editCamion:
+            case R.id.editConductor:
                 Toast.makeText(this, "editar " + position, Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.seeRoute:
+                Toast.makeText(this, "ruta " + position, Toast.LENGTH_SHORT).show();
                 return true;
         }
 
