@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/addCamion"
+        android:title="Añadir" />
+    <item
+        android:id="@+id/deleteCamion"
+        android:title="Borrar" />
+    <item
+        android:id="@+id/editCamion"
+        android:title="Editar" />
+    <item
+        android:id="@+id/seeDireccion"
+        android:title="Direccion" />
+</menu>

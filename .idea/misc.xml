@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_busqueda_por_id.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_camiones_view.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_conductores_view.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_paquetes_view.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_usuarios_view.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_main.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/context.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/context_camiones.xml" value="0.1" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/context_paquetes.xml" value="0.1037037037037037" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
