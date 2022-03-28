@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 
 import com.josefco.repartosaa2.R;
+import com.josefco.repartosaa2.view.usuarios.ListUsuariosView;
 
 public class InicioApp extends AppCompatActivity {
 

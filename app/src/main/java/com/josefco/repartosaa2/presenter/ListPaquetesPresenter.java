@@ -2,11 +2,8 @@ package com.josefco.repartosaa2.presenter;
 
 import com.josefco.repartosaa2.contract.ListPaquetesContract;
 import com.josefco.repartosaa2.domain.Paquete;
-import com.josefco.repartosaa2.domain.Usuario;
 import com.josefco.repartosaa2.model.ListPaquetesModel;
-import com.josefco.repartosaa2.model.ListUsuariosModel;
 import com.josefco.repartosaa2.view.ListPaquetesView;
-import com.josefco.repartosaa2.view.ListUsuariosView;
 
 import java.util.List;
 

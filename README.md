@@ -4,3 +4,8 @@
 ## Datos
 
 Aplicacion creada en Android studio para consumir la api creada en la asignatura de Acceso a Datos.
+
+## Tareas realizadas
+
+- Listado de todas las clases
+- Añadir y ver detalles clase Usuario (Con mapa incluido)

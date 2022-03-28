@@ -3,9 +3,7 @@ package com.josefco.repartosaa2.presenter;
 import com.josefco.repartosaa2.contract.ListConductoresContract;
 import com.josefco.repartosaa2.domain.Conductor;
 import com.josefco.repartosaa2.model.ListConductoresModel;
-import com.josefco.repartosaa2.model.ListUsuariosModel;
 import com.josefco.repartosaa2.view.ListConductoresView;
-import com.josefco.repartosaa2.view.ListUsuariosView;
 
 import java.util.List;
 

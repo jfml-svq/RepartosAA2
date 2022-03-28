@@ -10,9 +10,7 @@ import android.widget.Toast;
 import com.josefco.repartosaa2.R;
 import com.josefco.repartosaa2.contract.ListConductoresContract;
 import com.josefco.repartosaa2.domain.Conductor;
-import com.josefco.repartosaa2.domain.Usuario;
 import com.josefco.repartosaa2.presenter.ListConductoresPresenter;
-import com.josefco.repartosaa2.presenter.ListUsuarioPresenter;
 
 import java.util.ArrayList;
 import java.util.List;

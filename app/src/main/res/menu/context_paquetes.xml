@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/addConductor"
+        android:id="@+id/addPaquete"
         android:title="Añadir" />
     <item
-        android:id="@+id/deleteConductor"
+        android:id="@+id/deletePaquete"
         android:title="Borrar" />
     <item
-        android:id="@+id/editConductor"
+        android:id="@+id/editPaquete"
         android:title="Editar" />
     <item
         android:id="@+id/seeRoute"

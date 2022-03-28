@@ -3,6 +3,8 @@
     package="com.josefco.repartosaa2">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +15,16 @@
         android:theme="@style/Theme.RepartosAA2"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.usuarios.seeUsuarioDetalles"
+            android:exported="false" />
+        <activity
+            android:name=".view.usuarios.AddUsuarioView"
+            android:exported="false" />
+        <activity
             android:name=".view.ListPaquetesView"
             android:exported="false" />
         <activity
-            android:name=".view.ListUsuariosView"
+            android:name=".view.usuarios.ListUsuariosView"
             android:exported="false" />
         <activity
             android:name=".view.ListCamionesView"
@@ -33,6 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>

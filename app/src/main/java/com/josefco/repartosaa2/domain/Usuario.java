@@ -3,9 +3,13 @@ package com.josefco.repartosaa2.domain;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Usuario implements Serializable {
@@ -20,33 +24,19 @@ public class Usuario implements Serializable {
     private String telefono;
     @ColumnInfo
     private String direccion;
-//    @ColumnInfo
-//    private LocalDate fechareg;
-//    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-//    private byte[] image;
     @ColumnInfo
-    private double latitud;
+    private double lat;
     @ColumnInfo
-    private double longitud;
+    private double lon;
 
-//    public Usuario(int id, String nombre, String apellido, String telefono, String direccion, byte[] image, double latitud, double longitud) {
-//        this.id = id;
-//        this.nombre = nombre;
-//        this.apellido = apellido;
-//        this.telefono = telefono;
-//        this.direccion = direccion;
-//        this.image = image;
-//        this.latitud = latitud;
-//        this.longitud = longitud;
-//    }
-//
-//    public Usuario(int id, String nombre, String apellido, String telefono, String direccion) {
-//        this.id = id;
-//        this.nombre = nombre;
-//        this.apellido = apellido;
-//        this.telefono = telefono;
-//        this.direccion = direccion;
-//    }
+    public Usuario(String nombre, String apellido, String telefono, String direccion, double lat, double lon) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.lat = lat;
+        this.lon = lon;
+    }
 
     public int getId() {
         return id;
@@ -88,36 +78,20 @@ public class Usuario implements Serializable {
         this.direccion = direccion;
     }
 
-//    public LocalDate getFechareg() {
-//        return fechareg;
-//    }
-//
-//    public void setFechareg(LocalDate fechareg) {
-//        this.fechareg = fechareg;
-//    }
-//
-//    public byte[] getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(byte[] image) {
-//        this.image = image;
-//    }
-
-    public double getLatitud() {
-        return latitud;
+    public double getLat() {
+        return lat;
     }
 
-    public void setLatitud(double latitud) {
-        this.latitud = latitud;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
-    public double getLongitud() {
-        return longitud;
+    public double getLon() {
+        return lon;
     }
 
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
     @Override

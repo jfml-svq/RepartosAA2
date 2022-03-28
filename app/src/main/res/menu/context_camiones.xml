@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/addConductor"
+        android:id="@+id/addCamion"
         android:title="Añadir" />
     <item
-        android:id="@+id/deleteConductor"
+        android:id="@+id/deleteCamion"
         android:title="Borrar" />
     <item
-        android:id="@+id/editConductor"
+        android:id="@+id/editCamion"
         android:title="Editar" />
 </menu>

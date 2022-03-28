@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/addConductor"
-        android:title="Añadir" />
+        android:id="@+id/seeDetailsUsers"
+        android:title="Detalles" />
     <item
-        android:id="@+id/deleteConductor"
+        android:id="@+id/deleteUsuario"
         android:title="Borrar" />
     <item
-        android:id="@+id/editConductor"
+        android:id="@+id/editUsuario"
         android:title="Editar" />
     <item
         android:id="@+id/seeDireccion"
