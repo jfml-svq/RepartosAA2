@@ -10,14 +10,12 @@ import java.util.List;
 
 public class ListUsuarioPresenter implements
         ListUsuariosContract.Presenter,
-        ListUsuariosContract.Model.CargarUsuariosListener
-        //,ListUsuariosContract.Model.OnDeleteUsuarioListener
-        {
+        ListUsuariosContract.Model.CargarUsuariosListener, ListUsuariosContract.Model.DeleteUsuarioListener {
 
     private ListUsuariosModel model;
     private ListUsuariosView view;
 
-    public ListUsuarioPresenter(ListUsuariosView view){
+    public ListUsuarioPresenter(ListUsuariosView view) {
         model = new ListUsuariosModel(view.getApplicationContext());
         this.view = view;
     }
@@ -38,19 +36,20 @@ public class ListUsuarioPresenter implements
         view.showErrorMessage(message);
     }
 
-//    //DELETE USUARIO
-//    @Override
-//    public void deleteUsuario(int id) {
-//        model.deleteUsuario(id);
-//    }
-//
-//    @Override
-//    public void onDeleteUsuarioSuccess(int id) {
-//        view.showMessageSuccess("ok");
-//    }
-//
-//    @Override
-//    public void onDeleteUsuarioError(String message) {
-//        view.showErrorMessage("ok");
-//    }
+    //DELETE USUARIO
+    @Override
+    public void deleteUsuario(int id) throws IOException {
+        model.deleteUsuario(id);
+    }
+
+
+    @Override
+    public void onDeleteUsuarioSuccess(int id) {
+        view.showMessageSuccess("ok");
+    }
+
+    @Override
+    public void onDeleteUsuarioError(String message) {
+        view.showErrorMessage("ok");
+    }
 }

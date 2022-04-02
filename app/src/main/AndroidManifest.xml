@@ -18,7 +18,7 @@
             android:name=".view.usuarios.seeUsuarioDetalles"
             android:exported="false" />
         <activity
-            android:name=".view.usuarios.AddUsuarioView"
+            android:name=".view.usuarios.AddEditUsuarioView"
             android:exported="false" />
         <activity
             android:name=".view.ListPaquetesView"

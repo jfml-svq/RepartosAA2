@@ -53,6 +53,11 @@ public class ListUsuariosView extends AppCompatActivity implements
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.cargarAllUsuarios();
+    }
 
     @Override
     public void listarAllUsuarios(List<Usuario> usuarios) {
@@ -68,7 +73,6 @@ public class ListUsuariosView extends AppCompatActivity implements
 
 
     //MENU ACTION BAR
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar_usuarios, menu);
@@ -79,7 +83,8 @@ public class ListUsuariosView extends AppCompatActivity implements
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.addUsuario:
-                Intent intent = new Intent(this, AddUsuarioView.class);
+                Intent intent = new Intent(this, AddEditUsuarioView.class);
+                intent.putExtra("ACTION","POST");
                 startActivity(intent);
                 return true;
         }
@@ -112,15 +117,23 @@ public class ListUsuariosView extends AppCompatActivity implements
                 Toast.makeText(this, "detalles " + position, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.deleteUsuario:
-//                int id_usuario = usuariosList.get(position).getId();
-//                try {
-//                    presenter.deleteUsuario(id_usuario);
-//                    refreshList();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+                int id = usuariosList.get(position).getId();
+                try {
+                    presenter.deleteUsuario(id);
+                    Toast.makeText(this, "Usuario " + position + " eliminado", Toast.LENGTH_SHORT).show();
+                    presenter.cargarAllUsuarios();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 return true;
-            case R.id.editConductor:
+            case R.id.editUsuario:
+                usuario = usuariosList.get(position);
+                intent = new Intent(this, AddEditUsuarioView.class);
+                bundle = new Bundle();
+                bundle.putSerializable("usuario", usuario);
+                intent.putExtra("ACTION","PUT");
+                intent.putExtras(bundle);
+                startActivity(intent);
                 Toast.makeText(this, "editar " + position, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.seeDireccion:
@@ -131,9 +144,6 @@ public class ListUsuariosView extends AppCompatActivity implements
     }
 
     public void showMessageSuccess(String ok) {
-    }
-
-    public void refreshList() {
-        usuariosAdapter.notifyDataSetChanged();
+        Toast.makeText(this, ok, Toast.LENGTH_SHORT).show();
     }
 }

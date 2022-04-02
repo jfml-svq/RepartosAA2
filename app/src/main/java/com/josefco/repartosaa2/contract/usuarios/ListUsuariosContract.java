@@ -10,25 +10,31 @@ public interface ListUsuariosContract {
     interface Model {
         interface CargarUsuariosListener {
             void CargarUsuariosSuccess(List<Usuario> usuarios);
+
             void CargarUsuariosError(String message);
         }
+
         void CargarAllUsuarios(CargarUsuariosListener listener);
 
-//        interface OnDeleteUsuarioListener{
-//            void onDeleteUsuarioSuccess(int id);
-//            void onDeleteUsuarioError(String message);
-//        }
-//        void deleteUsuario(int id) throws IOException;
+        interface DeleteUsuarioListener {
+            void onDeleteUsuarioSuccess(int id);
+
+            void onDeleteUsuarioError(String message);
+        }
+
+        void deleteUsuario(int id) throws IOException;
+
     }
 
     interface View {
         void listarAllUsuarios(List<Usuario> usuarios);
-        void showErrorMessage(String message);
 
+        void showErrorMessage(String message);
     }
 
     interface Presenter {
         void cargarAllUsuarios();
-       // void deleteUsuario(int id) throws IOException;
+
+        void deleteUsuario(int id) throws IOException;
     }
 }

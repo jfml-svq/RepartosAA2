@@ -1,6 +1,7 @@
 package com.josefco.repartosaa2.model.usuarios;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.josefco.repartosaa2.api.PaquetesApi;
 import com.josefco.repartosaa2.api.PaquetesApiInterface;
@@ -8,6 +9,7 @@ import com.josefco.repartosaa2.contract.usuarios.ListUsuariosContract;
 import com.josefco.repartosaa2.domain.Usuario;
 import com.josefco.repartosaa2.presenter.usuarios.ListUsuarioPresenter;
 import com.josefco.repartosaa2.util.Mensajes;
+import com.josefco.repartosaa2.view.usuarios.ListUsuariosView;
 
 import java.io.IOException;
 import java.util.List;
@@ -46,37 +48,21 @@ public class ListUsuariosModel implements ListUsuariosContract.Model {
 
     }
 
-//    @Override
-//    public void deleteUsuario(int id) throws IOException {
-//        PaquetesApiInterface api = PaquetesApi.buildInstance();
-//        Call<Void> callDeleteUsuario = api.deleteUsuario(id);
-//        callDeleteUsuario.enqueue(new Callback<Void>() {
-//            @Override
-//            public void onResponse(Call<Void> call, Response<Void> response) {
-//                Void delete = response.body();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Void> call, Throwable t) {
-//
-//            }
-//        }
-//    }
+    @Override
+    public void deleteUsuario(int id) throws IOException {
+        PaquetesApiInterface api = PaquetesApi.buildInstance();
+        Call<Void> callDeleteUsuario = api.deleteUsuario(id);
+        callDeleteUsuario.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                String mensaje = String.valueOf(response.code());
+            }
 
-//    public void deleteUsuario(int id, ListUsuarioPresenter listUsuarioPresenter){
-//        PaquetesApiInterface api = PaquetesApi.buildInstance();
-//        Call<Void> callDeleteUsuario = api.deleteUsuario(id);
-//        callDeleteUsuario.enqueue(new Callback<Void>() {
-//            @Override
-//            public void onResponse(Call<Void> call, Response<Void> response) {
-//                Void delete = response.body();
-//                liste
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Void> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                String mensaje = String.valueOf(t.getMessage());
+            }
+        });
+    }
+
 }

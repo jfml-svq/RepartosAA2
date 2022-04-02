@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -64,5 +65,14 @@ public class seeUsuarioDetalles extends AppCompatActivity implements OnMapReadyC
         map = googleMap;
         map.addMarker(new MarkerOptions().position(ubicacionUsuario));
         map.moveCamera(CameraUpdateFactory.newLatLng(ubicacionUsuario));
+
+        // Posiciona la vista del usuario en el punto que se acaba de agregar
+        CameraUpdate camara =
+                CameraUpdateFactory.newLatLng(ubicacionUsuario);
+
+        // Coloca la vista del mapa sobre la posición del restaurante
+        // y activa el zoom para verlo de cerca
+        map.moveCamera(camara);
+        map.animateCamera(CameraUpdateFactory.zoomTo(8.0f));
     }
 }

@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".AddPlayerActivity">
+    tools:context=".view.usuarios.AddEditUsuarioView">
 
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -55,25 +56,25 @@
                 android:ems="10"
                 android:inputType="number"
                 tools:ignore="TextFields" />
+            <!---
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Direccion" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Direccion" />
-
-            <EditText
-                android:id="@+id/et_direccion_usuario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10" />
-
+                        <EditText
+                            android:id="@+id/et_direccion_usuario"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10" />
+            -->
             <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                tools:context=".view.usuarios.AddUsuarioView"/>
+                tools:context=".view.usuarios.AddEditUsuarioView" />
 
 
         </LinearLayout>
