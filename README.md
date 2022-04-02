@@ -8,4 +8,4 @@ Aplicacion creada en Android studio para consumir la api creada en la asignatura
 ## Tareas realizadas
 
 - Listado de todas las clases
-- Añadir y ver detalles clase Usuario (Con mapa incluido)
+- Detalles individual, añadir, borrar y editar de la clase Usuario (Con mapa incluido)
