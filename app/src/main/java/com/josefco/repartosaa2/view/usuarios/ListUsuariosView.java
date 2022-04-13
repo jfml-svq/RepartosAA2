@@ -3,7 +3,10 @@ package com.josefco.repartosaa2.view.usuarios;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -31,26 +34,54 @@ public class ListUsuariosView extends AppCompatActivity implements
     private ArrayAdapter<Usuario> usuariosAdapter;
     private List<Usuario> usuariosList;
 
+    List<Usuario> elements;
+    ListAdapter listAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_usuarios_view);
 
+
+//        init();
         iniciarListaUsuarios();
+
+
 
         presenter = new ListUsuarioPresenter(this);
         presenter.cargarAllUsuarios();
 
     }
 
+//    public void init(){
+//
+//        elements = new ArrayList<>();
+//        elements.add(new Usuario("recivler1","martinez", "9999999","sevilla", 2.9,2.3,"jose@com.com"));
+//        elements.add(new Usuario("recicler2","martinez", "9999999","sevilla", 2.9,2.3,"jose@com.com"));
+//
+//        listAdapter = new ListAdapter(elements, this);
+//        RecyclerView recyclerView = findViewById(R.id.rvListUsuarios);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+//        recyclerView.setAdapter(listAdapter);
+//
+//    }
+
     private void iniciarListaUsuarios() {
-        usuariosList = new ArrayList<>();
-        usuariosAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usuariosList);
-        ListView lvUsuarios = findViewById(R.id.lvUsuarios);
-        lvUsuarios.setAdapter(usuariosAdapter);
+//        usuariosList = new ArrayList<>();
+//        usuariosAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usuariosList);
+//        ListView lvUsuarios = findViewById(R.id.lvUsuarios);
+//        lvUsuarios.setAdapter(usuariosAdapter);
 
-        registerForContextMenu(lvUsuarios);
+        elements = new ArrayList<>();
+        listAdapter = new ListAdapter(elements,this);
+        RecyclerView recyclerView = findViewById(R.id.rvListUsuarios);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapter);
 
+        //registerForContextMenu(recyclerView);
     }
 
     @Override
@@ -61,9 +92,14 @@ public class ListUsuariosView extends AppCompatActivity implements
 
     @Override
     public void listarAllUsuarios(List<Usuario> usuarios) {
-        usuariosList.clear();
-        usuariosList.addAll(usuarios);
-        usuariosAdapter.notifyDataSetChanged();
+//        usuariosList.clear();
+//        usuariosList.addAll(usuarios);
+//        usuariosAdapter.notifyDataSetChanged();
+//        usuariosList.addAll(usuarios);
+
+        elements.clear();
+        elements.addAll(usuarios);
+        listAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -99,46 +135,46 @@ public class ListUsuariosView extends AppCompatActivity implements
             menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.context_usuarios, menu);
+
+
     }
 
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info =
-                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int position = info.position;
 
         switch (item.getItemId()) {
-            case R.id.seeDetailsUsers:
-                Usuario usuario = usuariosList.get(position);
+            case 0:
+                Usuario usuario = elements.get(item.getGroupId());
                 Intent intent = new Intent(this, SeeUsuarioDetallesView.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("usuario", usuario);
                 intent.putExtras(bundle);
                 startActivity(intent);
-                Toast.makeText(this, "detalles " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "detalles " + item.getGroupId(), Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.deleteUsuario:
-                String id = usuariosList.get(position).getId();
-                try {
-                    presenter.deleteUsuario(id);
-                    Toast.makeText(this, "Usuario " + position + " eliminado", Toast.LENGTH_SHORT).show();
-                    presenter.cargarAllUsuarios();
-                    usuariosAdapter.notifyDataSetChanged();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return true;
-            case R.id.editUsuario:
-                usuario = usuariosList.get(position);
+            case 1:
+                usuario = elements.get(item.getGroupId());
                 intent = new Intent(this, AddEditUsuarioView.class);
                 bundle = new Bundle();
                 bundle.putSerializable("usuario", usuario);
                 intent.putExtra("ACTION", "PUT");
                 intent.putExtras(bundle);
                 startActivity(intent);
-                Toast.makeText(this, "editar " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "editar " + item.getGroupId(), Toast.LENGTH_SHORT).show();
                 return true;
+            case 2:
+                String id = elements.get(item.getGroupId()).getId();
+                try {
+                    presenter.deleteUsuario(id);
+                    Toast.makeText(this, "Usuario " + item.getGroupId() + " eliminado", Toast.LENGTH_SHORT).show();
+                    presenter.cargarAllUsuarios();
+                    listAdapter.notifyDataSetChanged();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return true;
+
         }
         return true;
     }

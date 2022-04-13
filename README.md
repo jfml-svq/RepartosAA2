@@ -9,3 +9,5 @@ Aplicacion creada en Android studio para consumir la api creada en la asignatura
 
 - Listado de todas las clases
 - Detalles individual, añadir, borrar y editar de la clase Usuario (Con mapa incluido)
+- Detalles individual, añadir, borrar y editar + menu contextual de las clases camion y conductor.
+- Actualizada el listado del usuario con RecyclerView y menu contextual en el mismo.
