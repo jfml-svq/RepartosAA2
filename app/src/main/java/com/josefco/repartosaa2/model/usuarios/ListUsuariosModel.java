@@ -1,19 +1,23 @@
 package com.josefco.repartosaa2.model.usuarios;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.josefco.repartosaa2.api.PaquetesApi;
 import com.josefco.repartosaa2.api.PaquetesApiInterface;
 import com.josefco.repartosaa2.contract.usuarios.ListUsuariosContract;
 import com.josefco.repartosaa2.domain.Usuario;
-import com.josefco.repartosaa2.presenter.usuarios.ListUsuarioPresenter;
 import com.josefco.repartosaa2.util.Mensajes;
 import com.josefco.repartosaa2.view.usuarios.ListUsuariosView;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,11 +25,9 @@ import retrofit2.Response;
 public class ListUsuariosModel implements ListUsuariosContract.Model {
 
     private Context context;
-
     public ListUsuariosModel(Context context){
         this.context = context;
     }
-
 
     @Override
     public void CargarAllUsuarios(CargarUsuariosListener listener) {
@@ -48,19 +50,49 @@ public class ListUsuariosModel implements ListUsuariosContract.Model {
 
     }
 
+//    @Override
+//    public void CargarUsuariosRXJ(CargarUsuariosRXJListener listener) {
+//        PaquetesApiInterface api = PaquetesApi.buildInstance();
+//        //Observable<List<Usuario>> usuariosrxj = api.getAllUsuariosRXJ();
+//        Observable<List<Usuario>> usuariosrxj = api.getAllUsuariosRXJ().subscribe(new Observer<List<Usuario>>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(List<Usuario> value) {
+//                listener.CargarUsuariosRXJSuccess();
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//
+//            }
+//        });
+//
+//        //listener.CargarUsuariosRXJSuccess(usuariosrxj);
+//        System.out.println(usuariosrxj.toString());
+//    }
+
     @Override
-    public void deleteUsuario(int id) throws IOException {
+    public void deleteUsuario(String id, DeleteUsuarioListener listener) throws IOException {
         PaquetesApiInterface api = PaquetesApi.buildInstance();
         Call<Void> callDeleteUsuario = api.deleteUsuario(id);
         callDeleteUsuario.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                String mensaje = String.valueOf(response.code());
+                listener.onDeleteUsuarioSuccess(response.message());
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                String mensaje = String.valueOf(t.getMessage());
+                listener.onDeleteUsuarioError(Mensajes.ERROR);
             }
         });
     }

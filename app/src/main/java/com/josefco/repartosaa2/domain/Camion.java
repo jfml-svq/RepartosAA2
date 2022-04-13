@@ -4,11 +4,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class Camion {
+import java.io.Serializable;
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+@Entity
+public class Camion implements Serializable {
+
+    //@PrimaryKey(autoGenerate = true)
+    private String id;
     @ColumnInfo
     private String matricula;
     @ColumnInfo
@@ -18,16 +20,23 @@ public class Camion {
     @ColumnInfo
     private int gasolina;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Camion(int id, String matricula, String modelo, String marca, int gasolina) {
+    public Camion(String id, String matricula, String modelo, String marca, int gasolina) {
         this.id = id;
+        this.matricula = matricula;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.gasolina = gasolina;
+    }
+
+    public Camion(String matricula, String modelo, String marca, int gasolina) {
         this.matricula = matricula;
         this.modelo = modelo;
         this.marca = marca;
@@ -68,9 +77,6 @@ public class Camion {
 
     @Override
     public String toString() {
-        return "Camion{" +" matricula='" + matricula + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", marca='" + marca + '\'' +
-                '}';
+        return "[ " + matricula + " ]  [ " + marca +" ]  [ " + modelo + " ]";
     }
 }

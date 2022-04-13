@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.josefco.repartosaa2.R;
 import com.josefco.repartosaa2.domain.Usuario;
 
-public class seeUsuarioDetalles extends AppCompatActivity implements OnMapReadyCallback {
+public class SeeUsuarioDetallesView extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap map;
     public double latusuario;
@@ -42,6 +42,7 @@ public class seeUsuarioDetalles extends AppCompatActivity implements OnMapReadyC
         TextView tvapellidousuario = findViewById(R.id.tvapellidousuario);
         TextView tvtelefonousuario = findViewById(R.id.tvtelefonousuario);
         TextView tvdireccionusuario = findViewById(R.id.tvdireccionusuario);
+        TextView tvemailusuario = findViewById(R.id.tvemailusuario);
 
         Bundle objetoEnviado = getIntent().getExtras();
         Usuario usuario = null;
@@ -52,6 +53,7 @@ public class seeUsuarioDetalles extends AppCompatActivity implements OnMapReadyC
             tvapellidousuario.setText(usuario.getApellido());
             tvtelefonousuario.setText(usuario.getTelefono());
             tvdireccionusuario.setText(String.valueOf(usuario.getDireccion()));
+            tvemailusuario.setText(usuario.getEmail());
 
             latusuario = usuario.getLat();
             lonusuario = usuario.getLon();

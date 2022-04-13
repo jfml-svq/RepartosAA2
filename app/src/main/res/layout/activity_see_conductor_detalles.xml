@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".view.conductores.SeeConductorDetallesView">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detalles usuario"
+        android:text="Detalles Conductor"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -24,7 +25,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvnombreusuario"
+        android:id="@+id/tvnombreconductor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
@@ -38,7 +39,7 @@
 
 
     <TextView
-        android:id="@+id/tvapellidousuario"
+        android:id="@+id/tvapellidoconductor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
@@ -51,7 +52,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvtelefonousuario"
+        android:id="@+id/tvtelefonoconductor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
@@ -64,29 +65,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvdireccionusuario"
+        android:id="@+id/tvdireccionconductor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tvemailusuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"/>
-
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        tools:context=".view.usuarios.SeeUsuarioDetallesView"/>
 
 
 </LinearLayout>

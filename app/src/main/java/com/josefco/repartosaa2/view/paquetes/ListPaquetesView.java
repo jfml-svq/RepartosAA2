@@ -1,4 +1,4 @@
-package com.josefco.repartosaa2.view;
+package com.josefco.repartosaa2.view.paquetes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,9 +12,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.josefco.repartosaa2.R;
-import com.josefco.repartosaa2.contract.ListPaquetesContract;
+import com.josefco.repartosaa2.contract.paquetes.ListPaquetesContract;
 import com.josefco.repartosaa2.domain.Paquete;
-import com.josefco.repartosaa2.presenter.ListPaquetesPresenter;
+import com.josefco.repartosaa2.presenter.paquetes.ListPaquetesPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,13 +72,13 @@ public class ListPaquetesView extends AppCompatActivity implements ListPaquetesC
         int position = info.position;
 
         switch (item.getItemId()) {
-            case R.id.addConductor:
+            case R.id.seeDetailsConductor:
                 Toast.makeText(this, "añadir " + position, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.deleteConductor:
+            case R.id.deletePaquete:
                 Toast.makeText(this, "borrar " + position, Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.editConductor:
+            case R.id.editPaquete:
                 Toast.makeText(this, "editar " + position, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.seeRoute:

@@ -40,7 +40,7 @@ public class AddEditUsuarioModel implements AddEditUsuarioContract.Model {
     }
 
     @Override
-    public void modifyUsuario(int id, Usuario usuario, OnModifyUsuarioListener listener) {
+    public void modifyUsuario(String id, Usuario usuario, OnModifyUsuarioListener listener) {
         PaquetesApiInterface api = PaquetesApi.buildInstance();
         Call<Usuario> call = api.modifyUsuario(id, usuario);
         call.enqueue(new Callback<Usuario>() {

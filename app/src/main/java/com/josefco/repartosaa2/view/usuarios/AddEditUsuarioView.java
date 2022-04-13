@@ -11,7 +11,6 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -42,6 +41,8 @@ public class AddEditUsuarioView extends AppCompatActivity implements AddEditUsua
     private Action action;
     private Usuario usuario;
     public LatLng ubicacionUsuario;
+    public Bundle objetoEnviado;
+    public LatLng posicionDefault;
 
 
     @Override
@@ -49,19 +50,24 @@ public class AddEditUsuarioView extends AppCompatActivity implements AddEditUsua
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_usuario_view);
 
+        objetoEnviado = getIntent().getExtras();
+        action = Action.valueOf(getIntent().getStringExtra("ACTION"));
+
+        posicionDefault = new LatLng(0.0,0.0);
+
+        //usuario = null;
+        if (objetoEnviado != null && action == PUT) {
+            usuario = (Usuario) objetoEnviado.getSerializable("usuario");
+            ubicacionUsuario = new LatLng(usuario.getLat(),usuario.getLon());
+            rellenarCampos();
+        }
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        Bundle objetoEnviado = getIntent().getExtras();
-        action = Action.valueOf(getIntent().getStringExtra("ACTION"));
 
-        //usuario = null;
-        if (objetoEnviado != null && action == PUT) {
-            usuario = (Usuario) objetoEnviado.getSerializable("usuario");
-            rellenarCampos();
-        }
 
         presenter = new AddEditUsuarioPresenter(this);
     }
@@ -72,26 +78,44 @@ public class AddEditUsuarioView extends AppCompatActivity implements AddEditUsua
         map = googleMap;
         map.setOnMapLongClickListener(this);
 
-        ubicacionUsuario = new LatLng(usuario.getLat(),usuario.getLon());
 
-        map.addMarker(new MarkerOptions().position(ubicacionUsuario));
-        map.moveCamera(CameraUpdateFactory.newLatLng(ubicacionUsuario));
+        if (action == POST) {
+            map.addMarker(new MarkerOptions().position(posicionDefault));
+            map.clear();
+        }else if (action == PUT){
+            if (objetoEnviado != null) {
+                map.addMarker(new MarkerOptions().position(ubicacionUsuario));
+                map.moveCamera(CameraUpdateFactory.newLatLng(ubicacionUsuario));
+            }else{
+                map.clear();
+            }
 
-        // Posiciona la vista del usuario en el punto que se acaba de agregar
-        CameraUpdate camara =
-                CameraUpdateFactory.newLatLng(ubicacionUsuario);
+            // Posiciona la vista del usuario en el punto que se acaba de agregar
+            CameraUpdate camara =
+                    CameraUpdateFactory.newLatLng(ubicacionUsuario);
 
-        // Coloca la vista del mapa sobre la posición del restaurante
-        // y activa el zoom para verlo de cerca
-        map.moveCamera(camara);
-        map.animateCamera(CameraUpdateFactory.zoomTo(8.0f));
+            // Coloca la vista del mapa sobre la posición del restaurante
+            // y activa el zoom para verlo de cerca
+            map.moveCamera(camara);
+            map.animateCamera(CameraUpdateFactory.zoomTo(8.0f));
+        }
+//        map.moveCamera(CameraUpdateFactory.newLatLng(ubicacionUsuario));
+//        map.addMarker(new MarkerOptions().position(ubicacionUsuario));
+
+
     }
 
     public void obtenerUsuario(){
         Bundle objetoEnviado = getIntent().getExtras();
         if(objetoEnviado!=null){
             usuario= (Usuario) objetoEnviado.getSerializable("usuario");
+
         }
+    }
+
+    public void marcarMapa(){
+
+
     }
 
 
@@ -115,10 +139,7 @@ public class AddEditUsuarioView extends AppCompatActivity implements AddEditUsua
                     System.out.println("localidad " + listAddress.get(0).getLocality());
                     System.out.println("ciudad " + listAddress.get(0).getSubAdminArea());
                     System.out.println("provincia " + listAddress.get(0).getAdminArea());
-                    System.out.println("pais " + listAddress.get(0).getCountryName());
-                    System.out.println("codigo postal " + listAddress.get(0).getPostalCode());
-
-                }
+                    System.out.println("pais " + listAddress.get(0).getCountryName());}
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -133,22 +154,23 @@ public class AddEditUsuarioView extends AppCompatActivity implements AddEditUsua
         EditText etNombre = findViewById(R.id.et_nombre_usuario);
         EditText etApellido = findViewById(R.id.et_apellido_usuario);
         EditText etTelefono = findViewById(R.id.et_telefono_usuario);
-        //EditText etDireccion = findViewById(R.id.et_direccion_usuario);
+        EditText etEmail = findViewById(R.id.et_email_usuario);
 
         String nombre = etNombre.getText().toString();
         String apellido = etApellido.getText().toString();
         String telefono = etTelefono.getText().toString();
-        //etDireccion.setText(nombreMarker);
+        String email = etEmail.getText().toString();
 
 
-        if (action == POST)
-            presenter.addUsuario(nombre, apellido, telefono, nombreMarker, latusuario, lonusuario);
-        else
-            presenter.modifyUsuario(usuario.getId(), nombre, apellido, telefono, nombreMarker, latusuario, lonusuario);
+        if (action == POST){
+            presenter.addUsuario(nombre, apellido, telefono, nombreMarker, latusuario, lonusuario, email);
+        } else {
+            presenter.modifyUsuario(usuario.getId(), nombre, apellido, telefono, nombreMarker, latusuario, lonusuario, email);
+        }
         etNombre.setText("");
         etApellido.setText("");
         etTelefono.setText("");
-        //etDireccion.setText("");
+        etEmail.setText("");
         map.clear();
         contadorMarker = true;
     }
@@ -169,12 +191,12 @@ public class AddEditUsuarioView extends AppCompatActivity implements AddEditUsua
         EditText etNombre = findViewById(R.id.et_nombre_usuario);
         EditText etApellido = findViewById(R.id.et_apellido_usuario);
         EditText etTelefono = findViewById(R.id.et_telefono_usuario);
-        //EditText etDireccion = findViewById(R.id.et_direccion_usuario);
+        EditText etEmail = findViewById(R.id.et_email_usuario);
 
         etNombre.setText(usuario.getNombre());
         etApellido.setText(usuario.getApellido());
         etTelefono.setText(usuario.getTelefono());
-        //etDireccion.setText(usuario.getDireccion());
+        etEmail.setText(usuario.getEmail());
 
     }
 

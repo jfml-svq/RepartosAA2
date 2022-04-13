@@ -1,4 +1,4 @@
-package com.josefco.repartosaa2.contract;
+package com.josefco.repartosaa2.contract.paquetes;
 
 import com.josefco.repartosaa2.domain.Paquete;
 

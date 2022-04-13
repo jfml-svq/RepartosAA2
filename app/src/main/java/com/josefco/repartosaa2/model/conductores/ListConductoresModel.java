@@ -1,13 +1,14 @@
-package com.josefco.repartosaa2.model;
+package com.josefco.repartosaa2.model.conductores;
 
 import android.content.Context;
 
 import com.josefco.repartosaa2.api.PaquetesApi;
 import com.josefco.repartosaa2.api.PaquetesApiInterface;
-import com.josefco.repartosaa2.contract.ListConductoresContract;
+import com.josefco.repartosaa2.contract.conductores.ListConductoresContract;
 import com.josefco.repartosaa2.domain.Conductor;
 import com.josefco.repartosaa2.util.Mensajes;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -40,5 +41,22 @@ public class ListConductoresModel implements ListConductoresContract.Model {
             }
         });
 
+    }
+
+    @Override
+    public void deleteConductor(String id, DeleteConductorListener listener) throws IOException {
+        PaquetesApiInterface api = PaquetesApi.buildInstance();
+        Call<Void> callDeleteConductor = api.deleteConductor(id);
+        callDeleteConductor.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                listener.onDeleteConductorSuccess(response.message());
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onDeleteConductorError(Mensajes.ERROR);
+            }
+        });
     }
 }

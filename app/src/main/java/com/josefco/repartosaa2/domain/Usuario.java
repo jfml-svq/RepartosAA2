@@ -1,5 +1,6 @@
 package com.josefco.repartosaa2.domain;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,13 +10,18 @@ import com.google.gson.annotations.JsonAdapter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Usuario implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+
+
+    @PrimaryKey(autoGenerate = false)
+    @NonNull
+    private String id;
     @ColumnInfo
     private String nombre;
     @ColumnInfo
@@ -28,21 +34,32 @@ public class Usuario implements Serializable {
     private double lat;
     @ColumnInfo
     private double lon;
+    @ColumnInfo
+    private String email;
 
-    public Usuario(String nombre, String apellido, String telefono, String direccion, double lat, double lon) {
+    public Usuario(String nombre, String apellido, String telefono, String direccion, double lat, double lon, String email) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.direccion = direccion;
         this.lat = lat;
         this.lon = lon;
+        this.email = email;
     }
 
-    public int getId() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

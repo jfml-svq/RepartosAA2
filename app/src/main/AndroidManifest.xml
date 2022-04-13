@@ -15,22 +15,34 @@
         android:theme="@style/Theme.RepartosAA2"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.usuarios.seeUsuarioDetalles"
+            android:name=".view.camiones.AddEditCamionView"
+            android:exported="false" />
+        <activity
+            android:name=".view.camiones.SeeCamionDetallesView"
+            android:exported="false" />
+        <activity
+            android:name=".view.conductores.AddEditConductorView"
+            android:exported="false" />
+        <activity
+            android:name=".view.conductores.SeeConductorDetallesView"
+            android:exported="false" />
+        <activity
+            android:name=".view.usuarios.SeeUsuarioDetallesView"
             android:exported="false" />
         <activity
             android:name=".view.usuarios.AddEditUsuarioView"
             android:exported="false" />
         <activity
-            android:name=".view.ListPaquetesView"
+            android:name=".view.paquetes.ListPaquetesView"
             android:exported="false" />
         <activity
             android:name=".view.usuarios.ListUsuariosView"
             android:exported="false" />
         <activity
-            android:name=".view.ListCamionesView"
+            android:name=".view.camiones.ListCamionesView"
             android:exported="false" />
         <activity
-            android:name=".view.ListConductoresView"
+            android:name=".view.conductores.ListConductoresView"
             android:exported="false" />
         <activity
             android:name=".view.InicioApp"

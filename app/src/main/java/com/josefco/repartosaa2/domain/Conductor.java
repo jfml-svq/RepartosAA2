@@ -4,11 +4,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class Conductor {
+import java.io.Serializable;
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+@Entity
+public class Conductor implements Serializable {
+
+    //@PrimaryKey(autoGenerate = true)
+    private String id;
     @ColumnInfo
     private String nombre;
     @ColumnInfo
@@ -18,12 +20,18 @@ public class Conductor {
     @ColumnInfo
     private String direccion;
 
+    public Conductor(String nombre, String apellido, String telefono, String direccion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,7 +67,7 @@ public class Conductor {
         this.direccion = direccion;
     }
 
-    public Conductor(int id, String nombre, String apellido, String telefono, String direccion) {
+    public Conductor(String id, String nombre, String apellido, String telefono, String direccion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -69,10 +77,6 @@ public class Conductor {
 
     @Override
     public String toString() {
-        return "Conductor{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", telefono='" + telefono + '\'' +
-                '}';
+        return nombre +" "+ apellido +", Tel: " + telefono + ", " + direccion;
     }
 }

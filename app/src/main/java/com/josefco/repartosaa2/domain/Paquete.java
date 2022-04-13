@@ -4,10 +4,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-public class Paquete {
+public class Paquete implements Serializable {
 
 
     @PrimaryKey(autoGenerate = true)

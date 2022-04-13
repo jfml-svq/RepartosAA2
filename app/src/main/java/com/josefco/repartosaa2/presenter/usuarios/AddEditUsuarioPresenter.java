@@ -5,7 +5,10 @@ import com.josefco.repartosaa2.domain.Usuario;
 import com.josefco.repartosaa2.model.usuarios.AddEditUsuarioModel;
 import com.josefco.repartosaa2.view.usuarios.AddEditUsuarioView;
 
-public class AddEditUsuarioPresenter implements AddEditUsuarioContract.Presenter , AddEditUsuarioContract.Model.OnAddUsuarioListener, AddEditUsuarioContract.Model.OnModifyUsuarioListener {
+public class AddEditUsuarioPresenter
+        implements AddEditUsuarioContract.Presenter ,
+        AddEditUsuarioContract.Model.OnAddUsuarioListener,
+        AddEditUsuarioContract.Model.OnModifyUsuarioListener {
 
     private AddEditUsuarioModel model;
     private AddEditUsuarioView view;
@@ -16,8 +19,8 @@ public class AddEditUsuarioPresenter implements AddEditUsuarioContract.Presenter
     }
 //AÑADIR USUARIO
     @Override
-    public void addUsuario(String nombre, String apellido, String telefono, String direccion, double lat, double lon) {
-            Usuario usuario = new Usuario(nombre, apellido, telefono, direccion, lat, lon);
+    public void addUsuario(String nombre, String apellido, String telefono, String direccion, double lat, double lon, String email) {
+            Usuario usuario = new Usuario(nombre, apellido, telefono, direccion, lat, lon, email);
             model.addUsuario(usuario, this);
     }
     @Override
@@ -33,8 +36,8 @@ public class AddEditUsuarioPresenter implements AddEditUsuarioContract.Presenter
 
 //MODIFICAR USUARIO
     @Override
-    public void modifyUsuario(int id, String nombre, String apellido, String telefono, String direccion, double lat, double lon) {
-        Usuario usuario = new Usuario(nombre, apellido, telefono, direccion, lat, lon);
+    public void modifyUsuario(String id, String nombre, String apellido, String telefono, String direccion, double lat, double lon, String email) {
+        Usuario usuario = new Usuario(nombre, apellido, telefono, direccion, lat, lon, email );
         model.modifyUsuario(id, usuario, this);
     }
 

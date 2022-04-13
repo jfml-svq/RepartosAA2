@@ -1,14 +1,16 @@
-package com.josefco.repartosaa2.model;
+package com.josefco.repartosaa2.model.camiones;
 
 import android.content.Context;
 
 import com.josefco.repartosaa2.api.PaquetesApi;
 import com.josefco.repartosaa2.api.PaquetesApiInterface;
-import com.josefco.repartosaa2.contract.ListCamionesContract;
+import com.josefco.repartosaa2.contract.camiones.ListCamionesContract;
+import com.josefco.repartosaa2.contract.conductores.ListConductoresContract;
 import com.josefco.repartosaa2.domain.Camion;
 import com.josefco.repartosaa2.domain.Paquete;
 import com.josefco.repartosaa2.util.Mensajes;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -41,4 +43,23 @@ public class ListCamionesModel implements ListCamionesContract.Model {
             }
         });
     }
+
+    @Override
+    public void deleteCamion(String id, DeleteCamionListener listener) throws IOException {
+        PaquetesApiInterface api = PaquetesApi.buildInstance();
+        Call<Void> callCamion = api.deleteCamion(id);
+        callCamion.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                listener.onDeleteCamionSuccess(response.message());
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onDeleteCamionError(t.getMessage());
+            }
+        });
+    }
+
+
 }

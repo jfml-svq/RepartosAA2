@@ -1,9 +1,9 @@
-package com.josefco.repartosaa2.presenter;
+package com.josefco.repartosaa2.presenter.paquetes;
 
-import com.josefco.repartosaa2.contract.ListPaquetesContract;
+import com.josefco.repartosaa2.contract.paquetes.ListPaquetesContract;
 import com.josefco.repartosaa2.domain.Paquete;
-import com.josefco.repartosaa2.model.ListPaquetesModel;
-import com.josefco.repartosaa2.view.ListPaquetesView;
+import com.josefco.repartosaa2.model.paquetes.ListPaquetesModel;
+import com.josefco.repartosaa2.view.paquetes.ListPaquetesView;
 
 import java.util.List;
 

@@ -15,7 +15,7 @@ public interface AddEditUsuarioContract {
             void onModifyUsuarioSuccess(Usuario newUsuario);
             void onModifyUsuarioError(String message);
         }
-        void modifyUsuario(int id, Usuario usuario, OnModifyUsuarioListener listener);
+        void modifyUsuario(String id, Usuario usuario, OnModifyUsuarioListener listener);
     }
 
     interface View {
@@ -24,7 +24,7 @@ public interface AddEditUsuarioContract {
     }
 
     interface Presenter {
-        void addUsuario(String nombre, String apellido, String telefono, String direccion, double lat, double lon);
-        void modifyUsuario(int id, String nombre, String apellido, String telefono, String direccion, double lat, double lon);
+        void addUsuario(String nombre, String apellido, String telefono, String direccion, double lat, double lon, String email);
+        void modifyUsuario(String id, String nombre, String apellido, String telefono, String direccion, double lat, double lon, String email);
     }
 }

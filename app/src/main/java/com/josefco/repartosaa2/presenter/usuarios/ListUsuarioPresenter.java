@@ -10,7 +10,9 @@ import java.util.List;
 
 public class ListUsuarioPresenter implements
         ListUsuariosContract.Presenter,
-        ListUsuariosContract.Model.CargarUsuariosListener, ListUsuariosContract.Model.DeleteUsuarioListener {
+        ListUsuariosContract.Model.CargarUsuariosListener,
+        //ListUsuariosContract.Model.CargarUsuariosRXJListener,
+        ListUsuariosContract.Model.DeleteUsuarioListener {
 
     private ListUsuariosModel model;
     private ListUsuariosView view;
@@ -20,11 +22,17 @@ public class ListUsuarioPresenter implements
         this.view = view;
     }
 
-    //ALL USUARIOS
+    //ALL USUARIOS retrofit
     @Override
     public void cargarAllUsuarios() {
         model.CargarAllUsuarios(this);
     }
+
+//    //ALL USUARIOS rxjava
+//    @Override
+//    public void cargarAllUsuarios() {
+//        model.CargarUsuariosRXJ(this);
+//    }
 
     @Override
     public void CargarUsuariosSuccess(List<Usuario> usuarios) {
@@ -38,18 +46,26 @@ public class ListUsuarioPresenter implements
 
     //DELETE USUARIO
     @Override
-    public void deleteUsuario(int id) throws IOException {
-        model.deleteUsuario(id);
+    public void deleteUsuario(String id) throws IOException {
+        model.deleteUsuario(id, this);
     }
-
-
     @Override
-    public void onDeleteUsuarioSuccess(int id) {
-        view.showMessageSuccess("ok");
+    public void onDeleteUsuarioSuccess(String message) {
+        view.showMessageSuccess(message);
     }
 
     @Override
     public void onDeleteUsuarioError(String message) {
-        view.showErrorMessage("ok");
+        view.showErrorMessage(message);
     }
+
+//    @Override
+//    public void CargarUsuariosRXJSuccess(List<Usuario> usuariosrx) {
+//        view.listarAllUsuarios(usuariosrx);
+//    }
+//
+//    @Override
+//    public void CargarUsuariosRXJError(String message) {
+//        view.showMessageSuccess(message);
+//    }
 }

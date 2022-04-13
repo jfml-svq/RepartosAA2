@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.josefco.repartosaa2.R;
+import com.josefco.repartosaa2.view.camiones.ListCamionesView;
+import com.josefco.repartosaa2.view.conductores.ListConductoresView;
+import com.josefco.repartosaa2.view.paquetes.ListPaquetesView;
 import com.josefco.repartosaa2.view.usuarios.ListUsuariosView;
 
 public class InicioApp extends AppCompatActivity {

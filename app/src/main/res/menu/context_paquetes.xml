@@ -5,12 +5,12 @@
         android:id="@+id/addPaquete"
         android:title="Añadir" />
     <item
-        android:id="@+id/deletePaquete"
-        android:title="Borrar" />
-    <item
         android:id="@+id/editPaquete"
         android:title="Editar" />
     <item
         android:id="@+id/seeRoute"
         android:title="Ruta" />
+    <item
+        android:id="@+id/deletePaquete"
+        android:title="Borrar" />
 </menu>

@@ -1,10 +1,10 @@
-package com.josefco.repartosaa2.model;
+package com.josefco.repartosaa2.model.paquetes;
 
 import android.content.Context;
 
 import com.josefco.repartosaa2.api.PaquetesApi;
 import com.josefco.repartosaa2.api.PaquetesApiInterface;
-import com.josefco.repartosaa2.contract.ListPaquetesContract;
+import com.josefco.repartosaa2.contract.paquetes.ListPaquetesContract;
 import com.josefco.repartosaa2.domain.Paquete;
 import com.josefco.repartosaa2.util.Mensajes;
 
