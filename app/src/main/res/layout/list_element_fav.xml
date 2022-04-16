@@ -22,7 +22,7 @@
             android:padding="6dp">
 
             <ImageView
-                android:id="@+id/iconImageView"
+                android:id="@+id/iconImageViewfav"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_alignParentStart="true"
@@ -39,13 +39,13 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
-                android:layout_toEndOf="@+id/iconImageView"
+                android:layout_toEndOf="@+id/iconImageViewfav"
                 android:orientation="vertical"
                 android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@+id/iconImageView">
+                android:layout_toRightOf="@+id/iconImageViewfav">
 
                 <TextView
-                    android:id="@+id/nombreusuariorv"
+                    android:id="@+id/nombreusuariorvfav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -54,7 +54,7 @@
                     android:textSize="15sp"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/apellidousuariorv"
+                    android:id="@+id/apellidousuariorvfav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Martinez"
@@ -62,13 +62,13 @@
                     android:textSize="15sp"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/telefonousuariorv"
+                    android:id="@+id/telefonousuariorvfav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="6546565646"
                     android:textSize="15sp"/>
                 <TextView
-                    android:id="@+id/direccionusuariorv"
+                    android:id="@+id/direccionusuariorvfav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sevilla"
@@ -76,15 +76,16 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/favrv"
+            <ImageButton
+                android:id="@+id/deleteFav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:icon="@drawable/lb_ic_thumb_up"
-                android:onClick="favUsuario" />
+                android:layout_marginEnd="15dp"
+                android:onClick="deleteFav"
+                app:srcCompat="@android:drawable/ic_menu_delete"
+                app:tint="@android:color/black" />
 
         </RelativeLayout>
     </LinearLayout>

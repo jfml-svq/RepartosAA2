@@ -11,12 +11,15 @@
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_camiones_view.xml" value="0.33" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_conductores_view.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_paquetes_view.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_usuario_fav_view.xml" value="0.2296875" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_usuarios_view.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_main.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_see_camion_detalles_view.xml" value="0.22" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_see_conductor_detalles.xml" value="0.33" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_see_usuario_detalles.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/list_element.xml" value="0.39356884057971014" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/list_elementFav.xml" value="0.2296875" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/list_element_fav.xml" value="0.33" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/actionbar_camion.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/actionbar_conductor.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/actionbar_usuarios.xml" value="0.4041666666666667" />

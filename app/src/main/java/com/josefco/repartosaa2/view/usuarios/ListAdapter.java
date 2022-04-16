@@ -91,6 +91,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             menu.add(this.getAdapterPosition(),0,0, "Detalles");
             menu.add(this.getAdapterPosition(),1,1, "Editar");
             menu.add(this.getAdapterPosition(),2,2, "Borrar");
+            menu.add(this.getAdapterPosition(),3,3, "Añadir a Fav");
         }
     }
 

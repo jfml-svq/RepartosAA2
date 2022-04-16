@@ -5,22 +5,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.josefco.repartosaa2.R;
 import com.josefco.repartosaa2.contract.usuarios.ListUsuariosContract;
+import com.josefco.repartosaa2.database.AppDatabase;
 import com.josefco.repartosaa2.domain.Usuario;
+import com.josefco.repartosaa2.domain.UsuarioFav;
 import com.josefco.repartosaa2.presenter.usuarios.ListUsuarioPresenter;
 
 import java.io.IOException;
@@ -47,32 +48,12 @@ public class ListUsuariosView extends AppCompatActivity implements
 //        init();
         iniciarListaUsuarios();
 
-
-
         presenter = new ListUsuarioPresenter(this);
         presenter.cargarAllUsuarios();
 
     }
 
-//    public void init(){
-//
-//        elements = new ArrayList<>();
-//        elements.add(new Usuario("recivler1","martinez", "9999999","sevilla", 2.9,2.3,"jose@com.com"));
-//        elements.add(new Usuario("recicler2","martinez", "9999999","sevilla", 2.9,2.3,"jose@com.com"));
-//
-//        listAdapter = new ListAdapter(elements, this);
-//        RecyclerView recyclerView = findViewById(R.id.rvListUsuarios);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-//        recyclerView.setAdapter(listAdapter);
-//
-//    }
-
     private void iniciarListaUsuarios() {
-//        usuariosList = new ArrayList<>();
-//        usuariosAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, usuariosList);
-//        ListView lvUsuarios = findViewById(R.id.lvUsuarios);
-//        lvUsuarios.setAdapter(usuariosAdapter);
 
         elements = new ArrayList<>();
         listAdapter = new ListAdapter(elements,this);
@@ -92,21 +73,18 @@ public class ListUsuariosView extends AppCompatActivity implements
 
     @Override
     public void listarAllUsuarios(List<Usuario> usuarios) {
-//        usuariosList.clear();
-//        usuariosList.addAll(usuarios);
-//        usuariosAdapter.notifyDataSetChanged();
-//        usuariosList.addAll(usuarios);
 
         elements.clear();
         elements.addAll(usuarios);
         listAdapter.notifyDataSetChanged();
+
+
     }
 
     @Override
     public void showErrorMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
 
 
 
@@ -123,6 +101,11 @@ public class ListUsuariosView extends AppCompatActivity implements
             case R.id.addUsuario:
                 Intent intent = new Intent(this, AddEditUsuarioView.class);
                 intent.putExtra("ACTION", "POST");
+                startActivity(intent);
+                return true;
+            case R.id.listFav:
+                intent = new Intent(this, ListUsuarioFavView.class);
+                //intent.putExtra("ACTION", "POST");
                 startActivity(intent);
                 return true;
         }
@@ -174,6 +157,13 @@ public class ListUsuariosView extends AppCompatActivity implements
                     e.printStackTrace();
                 }
                 return true;
+            case 3:
+                usuario = elements.get(item.getGroupId());
+                UsuarioFav usuarioFav = new UsuarioFav(usuario.getNombre(),usuario.getApellido(),usuario.getTelefono(),usuario.getTelefono(),usuario.getEmail());
+                AppDatabase db = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "repartos").allowMainThreadQueries().build();
+                db.usuarioFavDAO().insert(usuarioFav);
+                Toast.makeText(this, "Usuario añadido a favoritos!", Toast.LENGTH_SHORT).show();
+                return true;
 
         }
         return true;
@@ -182,4 +172,7 @@ public class ListUsuariosView extends AppCompatActivity implements
     public void showMessageSuccess(String ok) {
         Toast.makeText(this, ok, Toast.LENGTH_SHORT).show();
     }
+
+
+
 }
