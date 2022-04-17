@@ -30,9 +30,6 @@ public class UsuarioFav {
         this.email = email;
     }
 
-    public UsuarioFav() {
-    }
-
     public int getId_fav() {
         return id_fav;
     }

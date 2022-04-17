@@ -1,9 +1,12 @@
 package com.josefco.repartosaa2.view.paquetes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +18,9 @@ import com.josefco.repartosaa2.R;
 import com.josefco.repartosaa2.contract.paquetes.ListPaquetesContract;
 import com.josefco.repartosaa2.domain.Paquete;
 import com.josefco.repartosaa2.presenter.paquetes.ListPaquetesPresenter;
+import com.josefco.repartosaa2.view.camiones.AddEditCamionView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +39,12 @@ public class ListPaquetesView extends AppCompatActivity implements ListPaquetesC
         iniciarListaPaquetes();
 
         presenter = new ListPaquetesPresenter(this);
+        presenter.cargarAllPaquetes();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         presenter.cargarAllPaquetes();
     }
 
@@ -58,6 +69,26 @@ public class ListPaquetesView extends AppCompatActivity implements ListPaquetesC
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+
+    //MENU ACTION BAR
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar_paquete, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.addPaquete:
+                Intent intent = new Intent(this, AddPaqueteView.class);
+                startActivity(intent);
+                return true;
+        }
+        return false;
+    }
+
+    //MENU CONTEXTUAL
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -72,20 +103,27 @@ public class ListPaquetesView extends AppCompatActivity implements ListPaquetesC
         int position = info.position;
 
         switch (item.getItemId()) {
-            case R.id.seeDetailsConductor:
-                Toast.makeText(this, "añadir " + position, Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.deletePaquete:
-                Toast.makeText(this, "borrar " + position, Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.editPaquete:
-                Toast.makeText(this, "editar " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "editar TODO " + position, Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.seeRoute:
-                Toast.makeText(this, "ruta " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ruta TODO " + position, Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.deletePaquete:
+                String id = paquetesList.get(position).getId();
+                try{
+                    presenter.deletePaquete(id);
+                    Toast.makeText(this, "Paquete " + position + " eliminado", Toast.LENGTH_SHORT).show();
+                    presenter.cargarAllPaquetes();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 return true;
         }
-
         return true;
+    }
+
+    public void showSuccessMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

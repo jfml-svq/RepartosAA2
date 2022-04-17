@@ -159,9 +159,7 @@ public class ListUsuariosView extends AppCompatActivity implements
                 return true;
             case 3:
                 usuario = elements.get(item.getGroupId());
-                UsuarioFav usuarioFav = new UsuarioFav(usuario.getNombre(),usuario.getApellido(),usuario.getTelefono(),usuario.getTelefono(),usuario.getEmail());
-                AppDatabase db = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "repartos").allowMainThreadQueries().build();
-                db.usuarioFavDAO().insert(usuarioFav);
+                presenter.addUsuarioFav(usuario.getNombre(),usuario.getApellido(),usuario.getTelefono(),usuario.getDireccion(),usuario.getEmail());
                 Toast.makeText(this, "Usuario añadido a favoritos!", Toast.LENGTH_SHORT).show();
                 return true;
 

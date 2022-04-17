@@ -6,6 +6,7 @@
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_add_edit_camion_view.xml" value="0.25" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_add_edit_conductor_view.xml" value="0.25" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_add_edit_usuario_view.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_add_paquete_view.xml" value="0.33" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_add_usuario_view.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_busqueda_por_id.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/activity_list_camiones_view.xml" value="0.33" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/layout/list_element_fav.xml" value="0.33" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/actionbar_camion.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/actionbar_conductor.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/actionbar_paquete.xml" value="0.1" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/actionbar_usuarios.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/context.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Jose/AndroidStudioProjects/RepartosAA2/app/src/main/res/menu/context_camiones.xml" value="0.33" />

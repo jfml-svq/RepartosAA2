@@ -15,6 +15,9 @@
         android:theme="@style/Theme.RepartosAA2"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.paquetes.AddPaqueteView"
+            android:exported="false" />
+        <activity
             android:name=".view.usuarios.ListUsuarioFavView"
             android:exported="false" />
         <activity

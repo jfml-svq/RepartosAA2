@@ -12,7 +12,7 @@ public class Paquete implements Serializable {
 
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private String id;
     @ColumnInfo
     private int ancho;
     @ColumnInfo
@@ -24,11 +24,19 @@ public class Paquete implements Serializable {
     @ColumnInfo
     private String color;
 
-    public int getId() {
+    public Paquete(int ancho, int largo, int alto, int peso, String color) {
+        this.ancho = ancho;
+        this.largo = largo;
+        this.alto = alto;
+        this.peso = peso;
+        this.color = color;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -74,8 +82,6 @@ public class Paquete implements Serializable {
 
     @Override
     public String toString() {
-        return "Paquete{" +
-                "id=" + id +
-                '}';
+        return "Id=" + id;
     }
 }

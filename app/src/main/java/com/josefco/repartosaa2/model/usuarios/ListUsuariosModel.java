@@ -3,11 +3,14 @@ package com.josefco.repartosaa2.model.usuarios;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.Room;
 
 import com.josefco.repartosaa2.api.PaquetesApi;
 import com.josefco.repartosaa2.api.PaquetesApiInterface;
 import com.josefco.repartosaa2.contract.usuarios.ListUsuariosContract;
+import com.josefco.repartosaa2.database.AppDatabase;
 import com.josefco.repartosaa2.domain.Usuario;
+import com.josefco.repartosaa2.domain.UsuarioFav;
 import com.josefco.repartosaa2.util.Mensajes;
 import com.josefco.repartosaa2.view.usuarios.ListUsuariosView;
 
@@ -98,5 +101,10 @@ public class ListUsuariosModel implements ListUsuariosContract.Model {
     }
 
 
+    public void addUsuarioFav(String nombre, String apellido, String telefono, String direccion, String email) {
+        UsuarioFav usuarioFav = new UsuarioFav(nombre,apellido, telefono, direccion, email);
+        AppDatabase db = Room.databaseBuilder(context,AppDatabase.class, "repartos").allowMainThreadQueries().build();
+        db.usuarioFavDAO().insert(usuarioFav);
 
+    }
 }

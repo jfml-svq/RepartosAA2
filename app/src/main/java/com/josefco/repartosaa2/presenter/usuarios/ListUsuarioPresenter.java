@@ -2,6 +2,7 @@ package com.josefco.repartosaa2.presenter.usuarios;
 
 import com.josefco.repartosaa2.contract.usuarios.ListUsuariosContract;
 import com.josefco.repartosaa2.domain.Usuario;
+import com.josefco.repartosaa2.domain.UsuarioFav;
 import com.josefco.repartosaa2.model.usuarios.ListUsuariosModel;
 import com.josefco.repartosaa2.view.usuarios.ListUsuariosView;
 
@@ -57,6 +58,10 @@ public class ListUsuarioPresenter implements
     @Override
     public void onDeleteUsuarioError(String message) {
         view.showErrorMessage(message);
+    }
+
+    public void addUsuarioFav(String nombre, String apellido, String telefono, String direccion, String email) {
+        model.addUsuarioFav(nombre, apellido, telefono, direccion, email);
     }
 
 //    @Override

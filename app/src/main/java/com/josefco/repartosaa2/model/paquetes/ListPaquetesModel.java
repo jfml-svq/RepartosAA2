@@ -8,6 +8,7 @@ import com.josefco.repartosaa2.contract.paquetes.ListPaquetesContract;
 import com.josefco.repartosaa2.domain.Paquete;
 import com.josefco.repartosaa2.util.Mensajes;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -41,5 +42,22 @@ public class ListPaquetesModel implements ListPaquetesContract.Model {
             }
         });
 
+    }
+
+    @Override
+    public void deletePaquete(String id, DeletePaqueteListener listener) throws IOException {
+        PaquetesApiInterface api = PaquetesApi.buildInstance();
+        Call<Void> callPaquetes = api.deletePaquete(id);
+        callPaquetes.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                listener.onDeletePaqueteSuccess(response.message());
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onDeletePaqueteError(t.getMessage());
+            }
+        });
     }
 }

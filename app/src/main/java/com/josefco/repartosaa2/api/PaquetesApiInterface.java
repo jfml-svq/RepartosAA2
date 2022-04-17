@@ -38,10 +38,10 @@ public interface PaquetesApiInterface {
     //TODO
     @GET("paquete/{id}")
     Call<Paquete> getPaquete(@Path("id") int id);
-    @POST("paquetes")
+    @POST("paquete")
     Call<Paquete> addPaquete(@Body Paquete paquete);
     @DELETE("paquete/{id}")
-    Call<Void> deletePaquete(@Path("id") int id);
+    Call<Void> deletePaquete(@Path("id") String id);
     @PUT("paquete/{id}")
     Call<Paquete> modifyPaquete(@Path("id") int id, @Body Paquete paquete);
 
